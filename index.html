@@ -1,1014 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eng.Moses Muthee - Web Developer from Nairobi, Kenya</title>
-
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/moses.png" type="image/svg+xml">
-
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!-- 
-    - google font link
-  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Moses Muthee is a software engineer and Mathematics and Computer Science student building practical digital products and software systems.">
+  <meta name="theme-color" content="#101820">
+  <title>Moses Muthee — Software Engineer</title>
+  <link rel="icon" href="./assets/images/_LMS9995.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Open+Sans:wght@400;500;700&family=Poppins:wght@400;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #edf2f4;
+      --muted: #aab6bd;
+      --bg: #101820;
+      --panel: #17232d;
+      --line: rgba(237,242,244,.13);
+      --accent: #79d2c4;
+      --accent-dark: #183d3a;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: "DM Sans", sans-serif; line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20; background: rgba(16,24,32,.9);
+      backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+    }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font: 800 1.05rem "Manrope", sans-serif; letter-spacing: -.04em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 27px; list-style: none; padding: 0; margin: 0; }
+    .nav-links a { color: var(--muted); font-size: .9rem; transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+    .nav-links .nav-cta { color: var(--bg); background: var(--accent); padding: 10px 15px; border-radius: 7px; font-weight: 700; }
+    .menu-toggle { display: none; border: 1px solid var(--line); color: var(--ink); background: transparent; border-radius: 7px; padding: 8px 11px; font-size: 1.1rem; }
+    .hero { padding: 94px 0 82px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(270px, .75fr); align-items: center; gap: 72px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--accent); }
+    h1, h2, h3 { font-family: "Manrope", sans-serif; line-height: 1.15; letter-spacing: -.045em; }
+    h1 { max-width: 760px; margin: 22px 0 20px; font-size: clamp(2.8rem, 6.4vw, 5.5rem); font-weight: 800; }
+    h1 .accent { color: var(--accent); }
+    .hero-lead { max-width: 690px; margin: 0; color: #c1cbd0; font-size: clamp(1.02rem, 1.6vw, 1.18rem); line-height: 1.85; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border: 1px solid var(--line); border-radius: 7px; font-weight: 700; font-size: .9rem; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #10201e; background: var(--accent); border-color: var(--accent); }
+    .hero-note { margin-top: 26px; color: var(--muted); font-size: .86rem; }
+    .hero-photo-wrap { position: relative; max-width: 370px; justify-self: end; }
+    .hero-photo-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid rgba(121,210,196,.55); border-radius: 12px; }
+    .hero-photo { position: relative; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 25%; border-radius: 10px; filter: saturate(.82); }
+    .photo-caption { position: absolute; left: -24px; bottom: 24px; padding: 13px 17px; background: var(--panel); border: 1px solid var(--line); border-radius: 7px; font-size: .82rem; color: var(--muted); }
+    .photo-caption strong { display: block; color: var(--ink); font-size: .95rem; }
+    .section { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-heading { max-width: 700px; margin-bottom: 38px; }
+    .section-heading h2 { margin: 13px 0; font-size: clamp(2rem, 4vw, 3rem); }
+    .section-heading p, .body-copy { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
+    .about-aside { padding: 25px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+    .about-aside img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+    .about-aside p { color: var(--muted); margin: 0; font-size: .92rem; }
+    .about-copy h3 { margin: 0 0 16px; font-size: 1.45rem; }
+    .about-copy p { margin: 0 0 17px; color: var(--muted); }
+    .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 27px; }
+    .fact { padding: 15px 17px; background: rgba(255,255,255,.025); border: 1px solid var(--line); border-radius: 7px; }
+    .fact strong { display: block; color: var(--accent); font-size: .92rem; }
+    .fact span { color: var(--muted); font-size: .82rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; overflow: hidden; min-height: 310px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; transition: transform .2s, border-color .2s; }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(121,210,196,.55); }
+    .project-image { width: 100%; height: 185px; object-fit: cover; background: #202d37; }
+    .project-content { padding: 21px 22px 22px; display: flex; flex: 1; flex-direction: column; }
+    .project-type { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; font-weight: 700; }
+    .project-content h3 { margin: 9px 0; font-size: 1.25rem; }
+    .project-content p { color: var(--muted); font-size: .9rem; margin: 0 0 17px; }
+    .project-link { margin-top: auto; color: var(--accent); font-weight: 700; font-size: .88rem; }
+    .project-link span { padding-left: 5px; }
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 11px; }
+    .skill { padding: 10px 15px; color: #dbe5e8; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; font-size: .9rem; }
+    .interest-note { margin-top: 28px; max-width: 740px; color: var(--muted); }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 35px; padding: 38px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+    .contact-panel h2 { margin: 10px 0; font-size: clamp(1.8rem, 3.5vw, 2.7rem); }
+    .contact-panel p { max-width: 600px; color: var(--muted); margin: 0; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; min-width: 225px; }
+    .contact-links a { color: var(--accent); font-weight: 600; font-size: .9rem; overflow-wrap: anywhere; }
+    .site-footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .83rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .socials { display: flex; gap: 18px; }
+    .socials a:hover { color: var(--accent); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    @media (max-width: 800px) {
+      .hero { padding: 65px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-photo-wrap { justify-self: start; width: min(78%, 350px); margin-left: 18px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-aside { max-width: 460px; }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(var(--max), calc(100% - 32px)); }
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 22px 22px; background: #121d26; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 17px; }
+      .nav-links.open { display: flex; }
+      .nav-links .nav-cta { text-align: center; }
+      .project-grid { grid-template-columns: 1fr; }
+      .section { padding: 65px 0; }
+      .facts { grid-template-columns: 1fr 1fr; }
+      .contact-panel { padding: 26px 22px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
-
-<body id="top">
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <a href="#">
-        <h1 class="logo">Eng. Moses Muthee</h1>
-      </a>
-
-      <button class="nav-toggle-btn" aria-label="Toggle Menu" data-nav-toggle-btn>
-        <ion-icon name="menu-outline" class="menu-icon"></ion-icon>
-        <ion-icon name="close-outline" class="close-icon"></ion-icon>
-      </button>
-
-      <nav class="navbar container">
-        <ul class="navbar-list">
-
-          <li>
-            <a href="#home" class="navbar-link" data-nav-link>Home</a>
-          </li>
-
-          <li>
-            <a href="#about" class="navbar-link" data-nav-link>About</a>
-          </li>
-
-          <li>
-            <a href="#portfolio" class="navbar-link" data-nav-link>Portfolio</a>
-          </li>
-
-          <li>
-            <a href="#skills" class="navbar-link" data-nav-link>Skills</a>
-          </li>
-
-          <li>
-            <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
-          </li>
-
-          <li>
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-          </li>
-
-          <li>
-            <a href="assets/files/Moses_Muthee_Gaita_CV2.docx" class="btn btn-primary" download>Download CV</a>
-          </li>
-
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Moses Muthee home">MOSES<span>.</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Selected work</a></li>
+          <li><a href="#skills">Toolkit</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="nav-cta" href="./assets/files/Moses Muthee CV.pdf" download>Download CV ↗</a></li>
         </ul>
       </nav>
-
     </div>
   </header>
 
-
-
-
-
   <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
-      <section class="hero" id="home">
-        <div class="container">
-
-          <div class="hero-banner">
-
-            <img src="./assets/images/mosesagain.png" width="864" height="864" loading="lazy" alt="Ethan's Photo"
-              class="img-cover">
-
-            <div class="elem elem-1">
-              <p class="elem-title">1</p>
-
-              <p class="elem-text">Year of Success</p>
-            </div>
-
-            <div class="elem elem-2">
-              <p class="elem-title">2+</p>
-
-              <p class="elem-text">Projects Completed</p>
-            </div>
-
-            <div class="elem elem-3">
-              <ion-icon name="trophy"></ion-icon>
-            </div>
-
-            <img src="./assets/images/rotate-img.png" width="169" height="172" alt="I'm developer from Nairobi, Kenya"
-              class="rotate-img">
-
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Software engineer · Nairobi, Kenya</div>
+          <h1>Turning thoughtful ideas into <span class="accent">working software.</span></h1>
+          <p class="hero-lead">
+            I'm Moses Muthee — a software engineer and Mathematics &amp; Computer Science student.
+            I build useful digital products, backend systems and applications, with a focus on
+            solving the problem properly rather than just adding another feature.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="button" href="#contact">Let's talk</a>
           </div>
+          <p class="hero-note">Backend development · Full-stack applications · APIs · Android</p>
+        </div>
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="./assets/images/_LMS9995.jpg" alt="Portrait of Moses Muthee" width="864" height="864">
+          <div class="photo-caption"><strong>Moses Muthee</strong>Engineer in progress. Builder by practice.</div>
+        </div>
+      </div>
+    </section>
 
-          <div class="hero-content">
-
-            <h2 class="hero-title">
-              <span>Hello I'm</span>
-              <strong>Moses Muthee</strong> Full Stack Software Engineer from Nairobi, Kenya
-            </h2>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious by nature. Practical by design.</h2>
+          <p>I like understanding how things work, finding where they can work better, and building the software to make that happen.</p>
+        </div>
+        <div class="about-grid">
+          <aside class="about-aside">
+            <img src="./assets/images/_LMS9715.jpg" alt="Moses Muthee" loading="lazy">
+            <p>Currently pursuing a Bachelor of Science in Mathematics and Computer Science at Murang’a University of Technology.</p>
+          </aside>
+          <div class="about-copy">
+            <h3>I care about the problem behind the code.</h3>
             <p>
-              I am Moses Muthee, a Full Stack Software Engineer based in Nairobi, Kenya, building tech that connects people, communities, and purpose. I’m skilled in Kotlin Android, but I also rock the web stack — crafting responsive, backend-powered apps using Django, Jinja, Python, HTML/CSS, and all the good stuff in between.
+              My experience spans backend development, API integration, database design, Android
+              development and deployment. I enjoy moving between the different parts of a product:
+              understanding requirements, shaping the data and application structure, building the
+              interface, connecting services and helping get the result into users' hands.
             </p>
-
-            <p class="hero-text">
-
+            <p>
+              I've worked with teams on products designed for real communities and everyday needs.
+              One example is AquaSense, a satellite-based water-monitoring solution that placed
+              third at the Build Zero Hackathon. I've also contributed to projects including
+              ChamaSpark and LinkedLine Connect.
             </p>
-
-            <div class="btn-group">
-              <a href="#contact" class="btn btn-primary blue">Get a Quote</a>
-
-              <a href="#about" class="btn">About Me</a>
+            <p>
+              Studying mathematics strengthens the way I approach engineering: break a complex
+              problem down, look for its structure, test assumptions and work towards a solution
+              that makes sense. I'm continuing to grow in full-stack engineering, cloud technologies,
+              DevOps and applied AI.
+            </p>
+            <div class="facts">
+              <div class="fact"><strong>Build</strong><span>Web, backend &amp; mobile applications</span></div>
+              <div class="fact"><strong>Collaborate</strong><span>Team projects &amp; technical problem-solving</span></div>
+              <div class="fact"><strong>Learn</strong><span>Mathematics, computer science &amp; new tools</span></div>
+              <div class="fact"><strong>Focus</strong><span>Useful, maintainable solutions</span></div>
             </div>
-
           </div>
-
         </div>
-      </section>
+      </div>
+    </section>
 
-
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-
-      <section class="section about" id="about">
-        <div class="container">
-
-          <figure class="about-banner">
-
-            <img src="./assets/images/mosesagain.png" width="800" height="652" loading="lazy" alt="Moses' Photo"
-              class="img-cover">
-
-            <img src="./assets/images/moses.png" width="800" height="717" loading="lazy" alt="Moses' Photo"
-              class="abs-img">
-
-            <div class="abs-icon abs-icon-1">
-              <ion-icon name="logo-css3"></ion-icon>
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Selected work</div>
+          <h2>Some things I've helped build.</h2>
+          <p>A selection of collaborative and personal work. Each project taught me something about building software that has a purpose beyond the screen.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <img class="project-image" src="./assets/images/ChatGPT Image May 12, 2025, 09_25_16 PM.png" alt="LinkedLine Connect project preview" loading="lazy">
+            <div class="project-content">
+              <div class="project-type">Web platform · Team project</div>
+              <h3>LinkedLine Connect</h3>
+              <p>A school–parent communication platform focused on keeping families informed through connected services and timely updates.</p>
+              <a class="project-link" href="https://github.com/mosesmuthee/LinkedLine-Connect" target="_blank" rel="noopener noreferrer">View source <span>↗</span></a>
             </div>
-
-            <div class="abs-icon abs-icon-2">
-              <ion-icon name="logo-javascript"></ion-icon>
+          </article>
+          <article class="project-card">
+            <img class="project-image" src="./assets/images/Gemini_Generated_Image_byqegpbyqegpbyqe.png" alt="ChamaSpark project preview" loading="lazy">
+            <div class="project-content">
+              <div class="project-type">Digital platform · Team project</div>
+              <h3>ChamaSpark</h3>
+              <p>A platform designed to help women’s groups organise activities, manage contributions and keep group information in one place.</p>
+              <a class="project-link" href="https://github.com/Alvin390/ChamaSpark" target="_blank" rel="noopener noreferrer">View source <span>↗</span></a>
             </div>
-
-            <div class="abs-icon abs-icon-3">
-              <ion-icon name="logo-angular"></ion-icon>
+          </article>
+          <article class="project-card">
+            <img class="project-image" src="./assets/images/ChatGPT Image May 15, 2025, 11_11_42 PM.png" alt="FaithFlow Connect project preview" loading="lazy">
+            <div class="project-content">
+              <div class="project-type">Community application</div>
+              <h3>FaithFlow Connect</h3>
+              <p>A concept for supporting church communities through communication, prayer and Bible-reading engagement tools.</p>
+              <span class="project-link">Project details coming soon</span>
             </div>
+          </article>
+          <article class="project-card">
+            <div class="project-image" style="display:grid;place-items:center;color:#79d2c4;font:800 2.5rem Manrope,sans-serif;">AquaSense</div>
+            <div class="project-content">
+              <div class="project-type">Hackathon · 3rd place</div>
+              <h3>AquaSense</h3>
+              <p>A satellite-based water-monitoring solution. I contributed to backend implementation as part of the team that placed third at the Build Zero Hackathon.</p>
+              <span class="project-link">Build Zero Hackathon</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          </figure>
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Tools I work with</div>
+          <h2>My current toolkit.</h2>
+          <p>Technologies I've used across projects and coursework. The list reflects practical exposure, not arbitrary skill percentages.</p>
+        </div>
+        <div class="skills-wrap" aria-label="Technical skills">
+          <span class="skill">Python</span><span class="skill">Django</span>
+          <span class="skill">Kotlin</span><span class="skill">Android</span>
+          <span class="skill">JavaScript</span><span class="skill">HTML</span>
+          <span class="skill">CSS</span><span class="skill">React</span>
+          <span class="skill">MySQL</span><span class="skill">Firebase</span>
+          <span class="skill">Firestore</span><span class="skill">REST APIs</span>
+          <span class="skill">Git &amp; GitHub</span><span class="skill">Jinja</span>
+          <span class="skill">M-PESA Daraja API</span>
+        </div>
+        <p class="interest-note">I'm also actively developing my knowledge of cloud infrastructure, deployment workflows, DevOps practices and AI-powered applications.</p>
+      </div>
+    </section>
 
-          <div class="about-content">
-
-            <h2 class="h2 section-title" style="margin-bottom: 10px;">Who is Moses Muthee?</h2>
-
-            <p class="section-subtitle">Full Stack Software Engineer | Kotlin | Django | Android MVVM | HTML | CSS </p>
-            <br>
-<!--            <h2 class="h2 section-title">I Develop Application that Help People</h2>-->
-<hr>
-            <br>
-            <p class="section-text">
-🌍 About Me<br>
-Hey there! I am Moses Muthee Gaita, a passionate Full Stack Software Engineer based in Nairobi, Kenya, with a deep desire to build tech that uplifts people, connects communities, and glorifies God. I trained at eMobilis Training Institute, where I honed my skills in mobile and web development, and I’m currently seeking opportunities to work, intern, attach myself with people of the same field(Software Engineering) both here in Kenya and also abroad to be able to open myself to greater opportunities in the future.
-
-From leading as a class prefect in primary school (New Highlight School🏽) to scoring an A in Computer Studies in high school, and also serving as a student leader (Deputy Dorm Captain and an Environment Captain), I've always leaned into leadership, learning, and leaving things better than I found them.
-       And not only learning, I love team leading because I know the impact that a strong team leader can cause to a team.
-
-👨🏽‍💻 What I Do
-I specialize in crafting mobile apps, web platforms, and backend systems that actually solve real-world problems. My core tech stack includes:
-
-Kotlin for Android Development
-
-Python with Django for backend magic
-
-HTML, CSS, and JavaScript for sleek, responsive UIs
-
-Firebase, Firestore, and role-based auth
-
-M-PESA Daraja API for mobile payments and STK Push
-
-Real-time features: Push notifications, Bible streak trackers, voice notes, and more
-
-I’ve also worked with complex data flows in Firestore, created admin dashboards, and built out parent-child user systems—especially for schools, churches, and community groups.
-
-A Bible Study & Discovery App for deeper scriptural engagement, spiritual accountability, and online fellowship via Google Meet, voice notes, and a prayer wall.
-
-My work bridges the spiritual and technical—empowering ministries, youth, and families with tools that actually work in real life.
-
-🛐 Faith & Purpose
-My journey isn’t just about code—it's about calling. I’m walking closer to God, rebuilding my spiritual rhythm. I believe that tech can be prophetic when it flows from a place of healing, humility, and vision.
-
-🚀 Vision & Vibe
-I’m not just trying to ship features—I’m building for impact, legacy, and Kingdom culture. Whether it’s church tech, social tools, or education systems, I want to create platforms that actually make people’s lives better.
-
-Big Picture
-I’m a forward-thinker with global dreams. I want to scale impact-driven tech across borders—whether it’s modern ministry platforms, education apps, or digital tools that restore family unity and amplify unheard voices.
-
-While learning from every life chapter—including the hard ones, I choose to walk bold.
-
-            </p>
-
-            <p class="section-text">
-             ✨ Let’s Build
-Whether you’re a ministry leader, fellow developer, or someone who believes in purpose-driven innovation, I’d love to connect. Let’s build tech that tells a story, sparks change, and stays true to what matters most.
-
-            </p>
-
-            <a href="#portfolio" class="btn btn-primary blue">View Portfolio</a>
-
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Have a project in mind?</div>
+            <h2>Let's build something useful.</h2>
+            <p>I'm open to software engineering opportunities, internships, collaborations and conversations with people building thoughtful technology.</p>
           </div>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #PORTFOLIO
-      -->
-
-      <section class="section portfolio" id="portfolio">
-        <div class="container">
-
-          <p class="section-subtitle">My Portfolio</p>
-
-          <h2 class="h2 section-title">What I have been working on!</h2>
-
-          <p class="section-text">
-            As a Full Stack Software Engineer, I have been able to work on some applications and websites both with teams and alone.
-          </p>
-
-          <ul class="portfolio-list">
-
-            <li>
-              <div class="portfolio-card" style="background-image: url('./assets/images/ChatGPT Image May 12, 2025, 09_25_16 PM.png'); background-size: cover; background-position: center;">
-                <div class="portfolio-flex">
-                  <div class="portfolio-image">
-                    <img src="./assets/images/ChatGPT Image May 12, 2025, 09_25_16 PM.png" alt="LinkedLine-Connect" style="width: 320px; border-radius: 16px;">
-                  </div>
-                  <div class="card-content">
-<!--                    <p class="card-subtitle">LinkedLine-Connect</p>-->
-<!--                    <h3 class="h3 card-title">LinkedLine Connect is a smart communication and engagement platform built to strengthen the bond between schools and parents. With features like real-time announcements, role-based access, and instant mobile notifications, we make sure that parents stay in the loop, effortlessly. It’s simple, secure, and built for better connection.</h3>-->
-                    <span class="btn-link">
-  <a href="https://github.com/mosesmuthee/LinkedLine-Connect.git" target="_blank" class="project-btn">
-    View Project
-    <ion-icon name="arrow-forward"></ion-icon>
-  </a>
-</span>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="portfolio-card" style="background-image: url('./assets/images/Gemini_Generated_Image_byqegpbyqegpbyqe.png'); background-size: cover; background-position: center;">
-                <div class="portfolio-flex">
-                  <div class="portfolio-image">
-                    <img src="./assets/images/Gemini_Generated_Image_byqegpbyqegpbyqe.png" alt="Chama Spark" style="width: 320px; border-radius: 16px;">
-                  </div>
-                  <div class="card-content">
-<!--                    <p class="card-subtitle">Chama Spark</p>-->
-<!--                    <h3 class="h3 card-title">Chama Spark is a smart digital platform designed to support women’s groups in managing their daily operations with ease and purpose. From event planning, meeting scheduling, and fine tracking, to contributions, financial records, and self-help articles, Chama Spark brings everything together in one place. It also features trending content tailored for women, promoting growth, connection, and empowerment—digitally and in real life.</h3>-->
-                    <span class="btn-link">
-                      <a href="https://github.com/Alvin390/ChamaSpark.git" target="_blank" style="color:#111;">
-                        <span>View Project</span>
-                        <ion-icon name="arrow-forward"></ion-icon>
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="portfolio-card" style="background-image: url('./assets/images/ChatGPT Image May 15, 2025, 11_11_42 PM.png'); background-size: cover; background-position: center;">
-                <div class="portfolio-flex">
-                  <div class="portfolio-image">
-                    <img src="./assets/images/ChatGPT Image May 15, 2025, 11_11_42 PM.png" alt="FaithFlow Connect" style="width: 320px; border-radius: 16px;">
-                  </div>
-                  <div class="card-content">
-<!--                    <p class="card-subtitle">FaithFlow Connect</p>-->
-<!--                    <h3 class="h3 card-title">FaithFlow Connect is a digital platform designed to strengthen church community through prayer tracking, Bible reading streaks, announcements, and seamless communication between pastors, leaders, and members.</h3>-->
-                    <span class="btn-link">
-                    </span>
-                </div>
-                  </div>
-              </div>
-            </li>
-
-            <li>
-<!--              <a href="#" class="portfolio-card" style="background-image: url('./assets/images/portfolio-4.jpg')">-->
-<!--                <div class="card-content">-->
-
-<!--                  <p class="card-subtitle">Details</p>-->
-
-<!--                  <h3 class="h3 card-title">Web Application for Desiverse</h3>-->
-
-<!--                  <span class="btn-link">-->
-<!--                    <span>View Project</span>-->
-
-<!--                    <ion-icon name="arrow-forward"></ion-icon>-->
-<!--                  </span>-->
-
-<!--                </div>-->
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #SKILLS
-      -->
-
-      <section class="section skills" id="skills">
-        <div class="container">
-
-          <p class="section-subtitle">My Soft Hands-On Skills</p>
-
-          <h2 class="h2 section-title">My Achievements</h2>
-
-          <p class="section-text">
-            Only a fool refuses to grow — but for me, leveling up is the mission. Every line of code, every late-night bug fix, every new project is part of my journey to becoming a world-class software engineer. Here's a snapshot of where I am right now—and where I’m headed.
-          </p>
-
-          <ul class="skills-list skills-circular-list">
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="95">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">CSS</h3>
-            </li>
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="75">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">React</h3>
-            </li>
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="85">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">MySql</h3>
-            </li>
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="80">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">Python</h3>
-            </li>
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="90">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">Kotlin</h3>
-            </li>
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="90">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">Django</h3>
-            </li> <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="70">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">Jinja</h3>
-            </li>
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="90">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">HTML</h3>
-            </li>
-            <!-- Firebase skill added below -->
-            <li class="skills-item-circular">
-              <div class="circular-bar" data-percent="80">
-                <span class="circular-bar-text">0%</span>
-                <svg>
-                  <circle class="circular-bar-bg" cx="60" cy="60" r="54"/>
-                  <circle class="circular-bar-fg" cx="60" cy="60" r="54"/>
-                </svg>
-              </div>
-              <h3 class="skills-title">Firebase</h3>
-            </li>
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #CONTACT
-      -->
-
-      <section class="section contact" id="contact">
-        <div class="container">
-
-          <div class="contact-card">
-
-            <p class="card-subtitle">Feel Free</p>
-
-            <h2 class="h2 section-title">Reach Out to me</h2>
-
-            <!-- <div class="wrapper">
-
-              <form action="" class="contact-form">
-
-                <input type="text" name="name" placeholder="Name" required class="contact-input">
-
-                <input type="email" name="email" placeholder="Email" required class="contact-input">
-
-                <textarea name="message" placeholder="Message" required class="contact-input"></textarea>
-
-                <button type="submit" class="btn-submit">Submit Message</button>
-
-              </form> -->
-
-              <ul class="contact-list">
-
-                <li class="contact-item">
-
-                  <div class="contact-icon">
-                    <ion-icon name="location"></ion-icon>
-                  </div>
-
-                  <div>
-                    <h3 class="contact-item-title">Address</h3>
-
-                    <address class="contact-item-link">
-                      246, Ngong Hills, Kajiado Kenya                    </address>
-                  </div>
-
-                </li>
-
-                <li class="contact-item">
-
-                  <div class="contact-icon">
-                    <ion-icon name="mail"></ion-icon>
-                  </div>
-
-                  <div>
-                    <h3 class="contact-item-title">Email</h3>
-
-                    <a href="mailto:engineermosesmuthee@gmail.com" class="contact-item-link">engineermosesmuthee@gmail.com</a>
-                  </div>
-
-                </li>
-
-                <li class="contact-item">
-
-                  <div class="contact-icon">
-                    <ion-icon name="call"></ion-icon>
-                  </div>
-
-                  <div>
-                    <h3 class="contact-item-title">Phone</h3>
-
-                    <a href="tel:+254782203709" class="contact-item-link"> +254 782203709</a>
-                  </div>
-
-                </li>
-
-              </ul>
-
-            </div>
-
+          <div class="contact-links">
+            <a href="mailto:engineermosesmuthee@gmail.com">engineermosesmuthee@gmail.com ↗</a>
+            <a href="tel:+254782203709">+254 782 203 709</a>
+            <a href="https://www.linkedin.com/in/moses-muthee-129482348/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/mosesmuthee" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           </div>
-
         </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #BLOG
-      -->
-
-<!--      <section class="section blog" id="blog">-->
-<!--        <div class="container">-->
-
-<!--          <p class="section-subtitle">Latest News</p>-->
-
-<!--          <h2 class="h2 section-title">Checkout My Recent Blogs</h2>-->
-
-<!--          <p class="section-text">-->
-<!--            Dliquip ex ea commo do conse namber onequa ute irure dolor in reprehen derit in voluptate-->
-<!--          </p>-->
-
-<!--          <ul class="blog-list">-->
-
-<!--            <li>-->
-<!--              <div class="blog-card">-->
-
-<!--                <figure class="card-banner">-->
-<!--                  <a href="#">-->
-<!--                    <img src="./assets/images/blog-1.jpg" width="1181" height="843" loading="lazy"-->
-<!--                      alt="Jim Morisson Says when the musics over turn off the light" class="img-cover">-->
-<!--                  </a>-->
-<!--                </figure>-->
-
-<!--                <a href="#" class="card-tag">Web Development</a>-->
-
-<!--                <h3 class="card-title">-->
-<!--                  <a href="#">Jim Morisson Says when the musics over turn off the light</a>-->
-<!--                </h3>-->
-
-<!--              </div>-->
-<!--            </li>-->
-
-<!--            <li>-->
-<!--              <div class="blog-card">-->
-
-<!--                <figure class="card-banner">-->
-<!--                  <a href="#">-->
-<!--                    <img src="./assets/images/blog-2.jpg" width="1181" height="843" loading="lazy"-->
-<!--                      alt="Jim Morisson Says when the musics over turn off the light" class="img-cover">-->
-<!--                  </a>-->
-<!--                </figure>-->
-
-<!--                <a href="#" class="card-tag">Web Development</a>-->
-
-<!--                <h3 class="card-title">-->
-<!--                  <a href="#">Jim Morisson Says when the musics over turn off the light</a>-->
-<!--                </h3>-->
-
-<!--              </div>-->
-<!--            </li>-->
-
-<!--            <li>-->
-<!--              <div class="blog-card">-->
-
-<!--                <figure class="card-banner">-->
-<!--                  <a href="#">-->
-<!--                    <img src="./assets/images/blog-3.jpg" width="1181" height="843" loading="lazy"-->
-<!--                      alt="Jim Morisson Says when the musics over turn off the light" class="img-cover">-->
-<!--                  </a>-->
-<!--                </figure>-->
-
-<!--                <a href="#" class="card-tag">Web Development</a>-->
-
-<!--                <h3 class="card-title">-->
-<!--                  <a href="#">Jim Morisson Says when the musics over turn off the light</a>-->
-<!--                </h3>-->
-
-<!--              </div>-->
-<!--            </li>-->
-
-<!--          </ul>-->
-
-<!--        </div>-->
-<!--      </section>-->
-
-      <!-- 
-        - #SUPPORT & CONTRIBUTIONS
-      -->
-
-      <section class="section support" id="support" style="text-align:center; margin-top: 40px;">
-        <div class="container">
-          <h2 class="h2 section-title">Support & Contributions</h2>
-          <p class="section-text" style="max-width: 500px; margin: 0 auto 20px;">
-            If you appreciate my work or want to support my journey as a developer, you can contribute directly via PayPal. Every bit of support helps me build more impactful projects and resources for the community!
-          </p>
-          <a href="https://www.paypal.com/donate?business=293N2EF5X82QU" target="_blank" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
-            <ion-icon name="logo-paypal"></ion-icon>
-            Support via PayPal
-          </a>
-        </div>
-      </section>
-
-    </article>
+      </div>
+    </section>
   </main>
 
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
-    <div class="container">
-
-      <p class="copyright">
-        &copy; 2025 <a href="#" class="copyright-link">smileycreatives</a><span class="br"></span> All Rights Reserved
-      </p>
-
-      <ul class="footer-list">
-        <li>
-          <a href="https://www.privacypolicies.com/live/7989fdb6-3ef7-4997-bea1-474e67f7b63b" class="footer-link">Terms & Condition</a>
-        </li>
-        <li>
-          <a href="https://www.freeprivacypolicy.com/live/e817020f-24e7-4f26-b690-4d1833cc9033" class="footer-link">Privacy Policy</a>
-        </li>
-      </ul>
-
-      <ul class="footer-social">
-        <li>
-          <a href="https://github.com/mosesmuthee" target="_blank" aria-label="GitHub">
-            <ion-icon name="logo-github"></ion-icon>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/vib3with.mos3s_/" target="_blank" aria-label="Instagram">
-            <ion-icon name="logo-instagram"></ion-icon>
-          </a>
-        </li>
-        <li>
-          <a href="tel:+254782203709" aria-label="Phone">
-            <ion-icon name="call"></ion-icon>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:engineermosesmuthee@gmail.com" aria-label="Email">
-            <ion-icon name="mail"></ion-icon>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/moses-muthee-gaita-129482348/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BpaczB9gfSGiZwEyVJr7e3A%3D%3D" target="_blank" aria-label="LinkedIn">
-            <ion-icon name="logo-linkedin"></ion-icon>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.paypal.com/donate?business=293N2EF5X82QU" target="_blank" aria-label="PayPal">
-            <ion-icon name="logo-paypal"></ion-icon>
-          </a>
-        </li>
-      </ul>
-
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Moses Muthee. Built with intention.</span>
+      <div class="socials">
+        <a href="https://github.com/mosesmuthee" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/moses-muthee-129482348/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:engineermosesmuthee@gmail.com">Email</a>
+      </div>
     </div>
   </footer>
 
-
-
-
-
-  <!-- 
-    - #BACK TO TOP
-  -->
-
-  <a href="#top" class="back-to-top" data-back-to-top>BACK TOP</a>
-
-
-
-
-
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
   <script>
-// Animate skills progress bars when in view or on refresh
-function animateSkills() {
-  const skills = document.querySelectorAll('.skills-progress');
-  skills.forEach(bar => {
-    const percent = bar.getAttribute('data-percent');
-    bar.style.transition = 'width 1.5s cubic-bezier(.4,2,.6,1)';
-    bar.style.width = percent + '%';
-  });
-}
+    const menuButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-// Intersection Observer to trigger animation when #skills is in view
-document.addEventListener('DOMContentLoaded', function() {
-  let animated = false;
-  const skillsSection = document.getElementById('skills');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting && !animated) {
-        animateSkills();
-        animated = true;
-      }
-    }, { threshold: 0.3 });
-    observer.observe(skillsSection);
-  } else {
-    // Fallback for old browsers
-    animateSkills();
-  }
-});
-</script>
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
 
-<style>
-/* Add this CSS to your style.css or inside a <style> tag */
-.skills-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.skills-item-circular {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.circular-bar {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto;
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.circular-bar svg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 120px;
-  height: 120px;
-  transform: rotate(-90deg);
-}
-.circular-bar-bg {
-  stroke: #e6e6e6;
-  stroke-width: 12;
-}
-.circular-bar-fg {
-  stroke: #0077b5;
-  stroke-width: 12;
-  stroke-linecap: round;
-  transition: stroke-dasharray 1.5s cubic-bezier(.4,2,.6,1);
-}
-.circular-bar-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff; /* Changed to white for visibility */
-  z-index: 1;
-  text-shadow: 0 2px 8px #001f3f, 0 1px 0 #0077b522;
-}
-.skills-circular-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-template-rows: repeat(2, auto);  /* 2 rows */
-  gap: 40px 32px;
-  justify-items: center;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 40px 0 0 0;
-}
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.textContent = "☰";
+      });
+    });
 
-/* Responsive: stack to 2 columns on medium screens */
-@media (max-width: 900px) {
-  .skills-circular-list {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-  }
-}
-
-/* Responsive: stack to 1 column on small screens */
-@media (max-width: 600px) {
-  .skills-circular-list {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-}
-
-/* Increase font size for about section */
-.about-content .section-title,
-.about-content .section-subtitle,
-.about-content .section-text {
-  font-size: 1.25rem;
-  line-height: 1.7;
-}
-
-.about-content .section-title {
-  font-size: 2.2rem;
-}
-
-.about-content .section-subtitle {
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-
-.about-content .section-text {
-  font-size: 1.15rem;
-}
-
-/* Portfolio card text color adjustments */
-.portfolio-card .card-content .card-title,
-.portfolio-card .card-content .card-subtitle,
-.portfolio-card .btn-link,
-.portfolio-card .btn-link span {
-  color: #111 !important; /* Black for all project titles and links */
-  text-shadow: none;
-}
-
-/* Ensure subtitle and other text on images are visible */
-.portfolio-card .card-content {
-  color: #111 !important; /* Black for all text on project images */
-  text-shadow: none;
-}
-</style>
-
-<script>
-// Helper to create SVG circles for each bar
-function createCircularSVG(percent) {
-  const radius = 50;
-  const circumference = 2 * Math.PI * radius;
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("width", "120");
-  svg.setAttribute("height", "120");
-
-  // Background circle
-  const bg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  bg.setAttribute("class", "circular-bar-bg");
-  bg.setAttribute("cx", "60");
-  bg.setAttribute("cy", "60");
-  bg.setAttribute("r", radius);
-  bg.setAttribute("fill", "none");
-  svg.appendChild(bg);
-
-  // Foreground circle
-  const fg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  fg.setAttribute("class", "circular-bar-fg");
-  fg.setAttribute("cx", "60");
-  fg.setAttribute("cy", "60");
-  fg.setAttribute("r", radius);
-  fg.setAttribute("fill", "none");
-  fg.setAttribute("stroke-dasharray", "0 " + circumference);
-  fg.setAttribute("stroke-dashoffset", "0");
-  svg.appendChild(fg);
-
-  return {svg, fg, circumference};
-}
-
-function animateCircularBars() {
-  document.querySelectorAll('.circular-bar').forEach(bar => {
-    const percent = parseInt(bar.getAttribute('data-percent'), 10);
-    const text = bar.querySelector('.circular-bar-text');
-    // Remove old SVG if any
-    const oldSVG = bar.querySelector('svg');
-    if (oldSVG) oldSVG.remove();
-    // Create SVG
-    const {svg, fg, circumference} = createCircularSVG(percent);
-    bar.appendChild(svg);
-
-    // Animate
-    let current = 0;
-    const duration = 1500;
-    const start = performance.now();
-    function animate(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.floor(progress * percent);
-      text.textContent = value + "%";
-      const dash = (value / 100) * circumference;
-      fg.setAttribute("stroke-dasharray", dash + " " + (circumference - dash));
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        text.textContent = percent + "%";
-        fg.setAttribute("stroke-dasharray", (percent / 100) * circumference + " " + (circumference - (percent / 100) * circumference));
-      }
-    }
-    requestAnimationFrame(animate);
-  });
-}
-
-// Intersection Observer to trigger animation when #skills is in view
-document.addEventListener('DOMContentLoaded', function() {
-  let animated = false;
-  const skillsSection = document.getElementById('skills');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting && !animated) {
-        animateCircularBars();
-        animated = true;
-      }
-    }, { threshold: 0.3 });
-    observer.observe(skillsSection);
-  } else {
-    // Fallback for old browsers
-    animateCircularBars();
-  }
-});
-</script>
-
-<svg width="0" height="0">
-  <defs>
-    <linearGradient id="skill-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0077b5"/>
-      <stop offset="100%" stop-color="#00c6fb"/>
-    </linearGradient>
-  </defs>
-</svg>
-
-<script>
-// Interactive & animated color-changing skill circles
-
-// Array of color gradients to cycle through
-const gradients = [
-  ['#0077b5', '#00c6fb'],
-  ['#001f3f', '#0077b5'],
-  ['#00c6fb', '#0077b5'],
-  ['#ff9800', '#0077b5'],
-  ['#43e97b', '#38f9d7'],
-  ['#f7971e', '#ffd200'],
-  ['#fd5c63', '#0077b5']
-];
-
-// Helper to update the SVG gradient dynamically
-function updateSkillGradient(colors) {
-  const stops = document.querySelectorAll('#skill-gradient stop');
-  if (stops.length >= 2) {
-    stops[0].setAttribute('stop-color', colors[0]);
-    stops[1].setAttribute('stop-color', colors[1]);
-  }
-}
-
-// Add hover effect to each circular bar
-document.querySelectorAll('.circular-bar').forEach((bar, idx) => {
-  bar.addEventListener('mouseenter', function () {
-    // Pick a random gradient on hover
-    const colors = gradients[Math.floor(Math.random() * gradients.length)];
-    updateSkillGradient(colors);
-  });
-  bar.addEventListener('mouseleave', function () {
-    // Restore default gradient
-    updateSkillGradient(['#0077b5', '#00c6fb']);
-  });
-});
-
-// Cycle gradients every 3 seconds for a lively effect
-let gradientIndex = 0;
-setInterval(() => {
-  gradientIndex = (gradientIndex + 1) % gradients.length;
-  updateSkillGradient(gradients[gradientIndex]);
-}, 3000);
-</script>
-
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>
